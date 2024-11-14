@@ -24,5 +24,4 @@ begin
         BR[DE] <= Dato;
 end
 
-endmodule 
-
+endmodule
