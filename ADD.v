@@ -1,13 +1,11 @@
 `timescale 1ns/1ns 
 
 module ADD(
-    input [31:0] PC,
-    input [31:0] bits,
-    output reg [31:0] suma
+    input [31:0] dato1,
+    input [31:0] dato2,
+    output [31:0] suma
 ); 
 
-    always @(*) begin
-        suma = PC + bits;
-    end
+assign suma = dato1 + dato2;
 
 endmodule
