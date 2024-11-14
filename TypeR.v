@@ -5,7 +5,7 @@ module TypeR(
     output [31:0] Resultado
 );
 
-//Br
+//Banco de Registros
 wire [31:0] d1BR_op1ALu;
 wire [31:0] d1BR_op2ALu;
 
@@ -26,8 +26,9 @@ wire Mem_To_BR;
 //Cables Mem
 wire [31:0] MemD;
 
+//Instancia de Unidad de Control
 U_Control UC (
-    .opcode(instruccion[31:26]),
+    .OpCode(instruccion[31:26]),
     .BR_En(BR_enabler),
     .AluC(AluControl),
     .EnW(MemW),
@@ -35,6 +36,7 @@ U_Control UC (
     .Mux1(Mem_To_BR)
 );
 
+//Instancia de Banco de Registros
 Banco instBanco (
     .DL1(instruccion [25:21]), //Rs
     .DL2(instruccion [20:16]), //Rt
@@ -45,15 +47,17 @@ Banco instBanco (
     .op2(d1BR_op2ALu)
 );
 
+//Instancia de la ALU
 ALU instALU(
     .Ope1(d1BR_op1ALu),
     .Ope2(d1BR_op2ALu),
     .AluOp(AluControl),
-    .Resultado(ResALU)
+    .Resultado(ResALU),
+	.ZeroFlag()
 );
 
-
-mux2_1 mux1(
+//Instancia del MUX2
+mux2 mux1(
     .sel(Mem_To_BR),
     .A(MemD),
     .B(ResALU),
@@ -77,5 +81,3 @@ endmodule
 6 101011
 7 200          [2077=2023+54]
 */
-
-
