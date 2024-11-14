@@ -4,7 +4,8 @@ module ALU(
     input [31:0] Ope1,
 	input [31:0] Ope2,
     input [2:0] AluOp,
-    output reg [31:0] Resultado
+    output reg [31:0] Resultado,
+	output reg ZeroFlag
 );
 
 always @(*)
@@ -43,7 +44,8 @@ begin
 			Resultado = 32'b0;
 		end
 	endcase
+	
+	ZeroFlag = (Resultado == 32'b0) ? 1'b1 : 1'b0;
 end
 
 endmodule
-
