@@ -1,23 +1,18 @@
 `timescale 1ns/1ns
 
-module mux2_1(
+module mux2(
     input sel,
-    input [31:0]A,
-    input [31:0]B,
-    output reg[31:0]C
+    input [31:0] A,
+    input [31:0] B,
+    output reg [31:0] C
 );
 
-always @*
-begin
+always @* begin
     if (sel)
-    begin
-        C=B;
-    end
+        C = B;
     else
-    begin
-        C=A;
-    end
-    
+        C = A;
 end
 
-endmodule 
+endmodule
+
