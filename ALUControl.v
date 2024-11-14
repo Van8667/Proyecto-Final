@@ -22,6 +22,5 @@ module ALUControl(
             end
             default: ALUControlOut = 3'b000;
         endcase
-    end
+    end
 endmodule
-
