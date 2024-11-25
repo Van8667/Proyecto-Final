@@ -4,7 +4,7 @@ from tkinter import messagebox
 import re
 
 def create_gui():
-    # Pantalla principal
+    
     window = tk.Tk()
     window.title("Instruction Decoder")
     window.geometry("600x600")
@@ -19,7 +19,7 @@ def create_gui():
     text_area = tk.Text(window, wrap=tk.WORD, height=10, width=70)
     text_area.pack(pady=10)
 
-    # Botón para decodificar el archivo
+
     global button_decode
     button_decode = tk.Button(window, text="Decodificar a Binario", command=convert_to_binary, state=tk.DISABLED)
     button_decode.pack(pady=10)
@@ -74,7 +74,7 @@ def convert_to_binary():
         messagebox.showerror("Error", f"Error al decodificar las instrucciones: {e}")
 
 def decode_instruction(instruction):
-    # Divide la instrucción en sus partes
+    
     parts = instruction.split()
     if len(parts) < 2:
         return None
@@ -82,7 +82,7 @@ def decode_instruction(instruction):
     operation = parts[0]
     args = parts[1:]
 
-    # Diccionario de opcodes y functs
+    
     opcodes = {"R": "000000", "addi": "001000", "lw": "100011", "sw": "101011", "j": "000010"}
     functs = {"add": "100000", "sub": "100010", "and": "100100", "or": "100101", "slt": "101010"}
 
